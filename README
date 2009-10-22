@@ -1,0 +1,75 @@
+parole
+------------------------------------------
+Parole is a modern media player based on the GStreamer framework
+and written for the Xfce desktop.
+
+Runtime requirements:
+  cygwin-1.7.0-62
+  gstreamer0.10-plugins-base
+  gstreamer0.10-plugins-good
+  gstreamer0.10-plugins-oss
+  gstreamer0.10-plugins-ximage
+  libcairo2-1.8.8-1
+  libdbus-glib_1_2-0.80-10
+  libdbus1_3-1.2.16-1
+  libgcc1-4.3.4-1
+  libgdk_pixbuf2.0_0-2.16.6-1
+  libglib2.0_0-2.20.5-1
+  libgstinterfaces0.10_0-0.10.24-1
+  libgstreamer0.10_0-0.10.24-1
+  libgstvideo0.10_0-0.10.24-1
+  libgtk2.0_0-2.16.6-1
+  libintl8-0.17-11
+  libnotify1-0.4.5-10
+  libpango1.0_0-1.24.5-1
+  libtag_c0-1.6-1
+  libX11_6-1.2.2-2
+  libxfce4util4-4.6.1-1
+  libxfcegui4_4-4.6.1-1
+
+Build requirements:
+(besides corresponding -devel packages)
+  autoconf2.5-2.63-10
+  automake1.10-1.10.2-10
+  binutils-2.19.51-1
+  cygport-0.9.10-1
+  gawk-3.1.7-1
+  gcc4-core-4.3.4-1
+  libtool-2.2.7a-14
+  make-3.81-2
+  pkg-config-0.23b-10
+  sed-4.1.5-2
+  xfce4-dev-tools-4.6.0-10
+
+Canonical website:
+  http://goodies.xfce.org/projects/applications/parole
+
+Canonical download:
+  http://archive.xfce.org/src/apps/parole/
+
+-------------------------------------------
+
+Build instructions:
+  unpack parole-0.1.90-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./parole-0.1.90-X.cygport all
+
+This will create:
+  /usr/src/parole-0.1.90-X-src.tar.bz2
+  /usr/src/parole-0.1.90-X.tar.bz2
+
+For a list of files included in the binary package, run from the 
+command-line: 'cygcheck -cd parole'.
+
+-------------------------------------------
+
+Port Notes:
+
+----- version 0.1.90-1 -----
+Initial release for Cygwin 1.7.
+
+
+Cygwin port maintained by:
+http://sourceware.org/cygwinports/

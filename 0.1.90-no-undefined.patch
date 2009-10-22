@@ -1,0 +1,88 @@
+--- origsrc/parole-0.1.90/parole/Makefile.am	2009-09-29 05:36:41.000000000 -0500
++++ src/parole-0.1.90/parole/Makefile.am	2009-10-21 20:57:34.016485700 -0500
+@@ -1,6 +1,6 @@
+ bin_PROGRAMS = parole
+ 
+-noinst_LTLIBRARIES =                    	\
++lib_LTLIBRARIES =                    	\
+         libparole.la
+ 
+ INCLUDES =					\
+--- origsrc/parole-0.1.90/plugins/properties/Makefile.am	2009-09-29 05:36:41.000000000 -0500
++++ src/parole-0.1.90/plugins/properties/Makefile.am	2009-10-21 20:59:09.926618000 -0500
+@@ -20,10 +20,13 @@ stream_properties_la_CFLAGS =			\
+ 	$(TAGLIBC_CFLAGS)
+ 
+ stream_properties_la_LIBADD =			\
++	$(top_builddir)/parole/libparole.la	\
++	$(GTK_LIBS)					\
+ 	$(TAGLIBC_LIBS)
+ 
+ stream_properties_la_LDFLAGS =			\
+ 	-avoid-version				\
+ 	-export-dynamic				\
+ 	-module					\
++	-no-undefined				\
+ 	$(PLATFORM_LDFLAGS)
+--- origsrc/parole-0.1.90/plugins/properties/stream-properties.c	2009-09-29 05:36:41.000000000 -0500
++++ src/parole-0.1.90/plugins/properties/stream-properties.c	2009-10-21 21:08:32.414448800 -0500
+@@ -464,7 +464,7 @@ free_data_cb (ParolePlugin *plugin, Plug
+     g_free (data);
+ }
+ 
+-G_MODULE_EXPORT static void
++G_MODULE_EXPORT void
+ construct (ParolePlugin *plugin)
+ {
+     PluginData *data;
+--- origsrc/parole-0.1.90/plugins/tray/Makefile.am	2009-09-29 05:36:41.000000000 -0500
++++ src/parole-0.1.90/plugins/tray/Makefile.am	2009-10-21 20:59:34.406651800 -0500
+@@ -25,7 +25,12 @@ tray_icon_la_LDFLAGS =				\
+ 	-avoid-version				\
+ 	-export-dynamic				\
+ 	-module					\
++	-no-undefined				\
+ 	$(PLATFORM_LDFLAGS)
+ 
+ tray_icon_la_LIBADD =				\
+-	$(LIBNOTIFY_LIBS)
+\ No newline at end of file
++	$(top_builddir)/parole/libparole.la	\
++	$(GTK_LIBS)				\
++	$(LIBXFCE4GUI_LIBS)			\
++	$(LIBXFCE4UTIL_LIBS)			\
++	$(LIBNOTIFY_LIBS)
+--- origsrc/parole-0.1.90/plugins/tray/tray-icon.c	2009-10-06 05:04:00.000000000 -0500
++++ src/parole-0.1.90/plugins/tray/tray-icon.c	2009-10-21 21:08:51.574475200 -0500
+@@ -484,7 +484,7 @@ delete_event_cb (GtkWidget *widget, GdkE
+     return ret_val;
+ }
+ 
+-G_MODULE_EXPORT static void
++G_MODULE_EXPORT void
+ construct (ParolePlugin *plugin)
+ {
+     PluginData *data;
+--- origsrc/parole-0.1.90/plugins/window-title/Makefile.am	2009-09-29 05:36:41.000000000 -0500
++++ src/parole-0.1.90/plugins/window-title/Makefile.am	2009-10-21 20:58:58.606602400 -0500
+@@ -22,4 +22,9 @@ window_title_la_LDFLAGS =			\
+ 	-avoid-version				\
+ 	-export-dynamic				\
+ 	-module					\
++	-no-undefined				\
+ 	$(PLATFORM_LDFLAGS)
++
++window_title_la_LIBADD =			\
++	$(top_builddir)/parole/libparole.la	\
++	$(GTK_LIBS)
+--- origsrc/parole-0.1.90/plugins/window-title/window-title.c	2009-09-29 05:36:41.000000000 -0500
++++ src/parole-0.1.90/plugins/window-title/window-title.c	2009-10-21 21:09:05.154494000 -0500
+@@ -79,7 +79,7 @@ free_data_cb (ParolePlugin *plugin, Plug
+     g_free (data);
+ }
+ 
+-G_MODULE_EXPORT static void
++G_MODULE_EXPORT void
+ construct (ParolePlugin *plugin)
+ {
+     PluginData *data;
