@@ -3,4 +3,6 @@ inherit xfce4
 DESCRIPTION="Xfce GStreamer media player"
 HOMEPAGE="http://goodies.xfce.org/projects/applications/parole"
 
-PATCH_URI="0.1.90-no-undefined.patch"
+PATCH_URI="0.2.0-no-undefined.patch"
+
+CYGCONF_ARGS="--libexecdir=/usr/lib/parole-0 --disable-power-manager-plugin"

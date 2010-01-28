@@ -1,0 +1,112 @@
+--- origsrc/parole-0.2.0.2/browser-plugin/Makefile.am	2010-01-25 05:22:07.000000000 -0600
++++ src/parole-0.2.0.2/browser-plugin/Makefile.am	2010-01-28 13:56:57.434515600 -0600
+@@ -31,10 +31,10 @@ INCLUDES =                              
+ 
+ install_libexecdir = $(BROWSER_PLUGIN_DIR)
+ 
+-install_libexec_PROGRAMS = 				\
+-	parole-player.so
++install_libexec_LTLIBRARIES = 				\
++	parole-player.la
+ 
+-parole_player_so_SOURCES =     				\
++parole_player_la_SOURCES =     				\
+ 	plugin.cpp					\
+ 	plugin.h					\
+ 	plugin_setup.cpp  				\
+@@ -50,14 +50,9 @@ parole_player_so_SOURCES =     				\
+ 	npruntime.h					\
+ 	nptypes.h
+ 
+-parole_player_so_CFLAGS =                               \
+-	-fPIC
++parole_player_la_LDFLAGS =                               \
++	-module -avoid-version -no-undefined
+ 
+-parole_player_so_LDFLAGS =                              \
+-	-Xcompiler					\
+-	-shared						\
+-	-fPIC
+-
+-parole_player_so_LDADD =				\
++parole_player_la_LIBADD =				\
+         $(GTK_LIBS)                                     \
+         $(DBUS_GLIB_LIBS)
+--- origsrc/parole-0.2.0.2/parole/Makefile.am	2010-01-25 05:22:07.000000000 -0600
++++ src/parole-0.2.0.2/parole/Makefile.am	2010-01-28 13:50:58.553988800 -0600
+@@ -1,4 +1,4 @@
+-noinst_LTLIBRARIES =                    	\
++lib_LTLIBRARIES =                    	\
+         libparole.la
+ 
+ INCLUDES =                              	\
+@@ -36,6 +36,16 @@ libparole_la_CFLAGS =				\
+ 	$(TAGLIBC_CFLAGS)			\
+ 	$(LIBXFCE4UTIL_CFLAGS)
+ 
++libparole_la_LIBADD =				\
++	$(GIO_LIBS)                           \
++	$(GTK_LIBS)				\
++	$(TAGLIBC_LIBS)			\
++	$(LIBXFCE4UTIL_LIBS)
++
++libparole_la_LDFLAGS =				\
++	-release $(PAROLE_VERSION_API)			\
++	-no-undefined
++
+ paroleincludedir =				\
+ 	$(includedir)/parole
+ 
+--- origsrc/parole-0.2.0.2/plugins/properties/Makefile.am	2010-01-25 05:22:07.000000000 -0600
++++ src/parole-0.2.0.2/plugins/properties/Makefile.am	2010-01-28 13:47:14.921197800 -0600
+@@ -23,12 +23,15 @@ stream_properties_la_CFLAGS =			\
+ 	$(LIBXFCE4UTIL_CFLAGS)
+ 
+ stream_properties_la_LIBADD =			\
++	$(top_builddir)/parole/libparole.la		\
++	$(GTK_LIBS)					\
+ 	$(TAGLIBC_LIBS)
+ 
+ stream_properties_la_LDFLAGS =			\
+ 	-avoid-version				\
+ 	-export-dynamic				\
+ 	-module					\
++	-no-undefined				\
+ 	$(PLATFORM_LDFLAGS)
+ 
+ #
+--- origsrc/parole-0.2.0.2/plugins/tray/Makefile.am	2010-01-25 05:22:07.000000000 -0600
++++ src/parole-0.2.0.2/plugins/tray/Makefile.am	2010-01-28 13:48:16.371712500 -0600
+@@ -27,9 +27,14 @@ tray_icon_la_LDFLAGS =				\
+ 	-avoid-version				\
+ 	-export-dynamic				\
+ 	-module					\
++	-no-undefined				\
+ 	$(PLATFORM_LDFLAGS)
+ 
+ tray_icon_la_LIBADD =				\
++	$(top_builddir)/parole/libparole.la	\
++	$(GTK_LIBS)					\
++	$(LIBXFCE4GUI_LIBS)			\
++	$(LIBXFCE4UTIL_LIBS)			\
+ 	$(LIBNOTIFY_LIBS)
+ 
+ #
+--- origsrc/parole-0.2.0.2/plugins/window-title/Makefile.am	2010-01-25 05:22:07.000000000 -0600
++++ src/parole-0.2.0.2/plugins/window-title/Makefile.am	2010-01-28 13:48:54.892915800 -0600
+@@ -21,10 +21,15 @@ window_title_la_CFLAGS =			\
+ 	$(GTK_CFLAGS)				\
+ 	$(LIBXFCE4UTIL_CFLAGS)
+ 
++window_title_la_LIBADD =			\
++	$(top_builddir)/parole/libparole.la		\
++	$(GTK_LIBS)
++
+ window_title_la_LDFLAGS =			\
+ 	-avoid-version				\
+ 	-export-dynamic				\
+ 	-module					\
++	-no-undefined				\
+ 	$(PLATFORM_LDFLAGS)
+ 
+ #
