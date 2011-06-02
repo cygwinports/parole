@@ -1,5 +1,5 @@
 category: Audio Video Xfce
-requires: gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-oss gstreamer0.10-plugins-ximage libcairo2 libdbus-glib_1_2 libdbus1_3 libgcc1 libgdk_pixbuf2.0_0 libglib2.0_0 libgstinterfaces0.10_0 libgstreamer0.10_0 libgtk2.0_0 libintl8 libnotify1 libpango1.0_0 libtag_c0 libX11_6 libxfce4util4 libxfcegui4_4
+requires: gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-oss gstreamer0.10-plugins-ximage libcairo2 libdbus-glib_1_2 libdbus1_3 libgcc1 libgdk_pixbuf2.0_0 libglib2.0_0 libgstinterfaces0.10_0 libgstreamer0.10_0 libgtk2.0_0 libnotify4 libpango1.0_0 libtag_c0 libX11_6 libxfce4util4 libxfcegui4_4
 sdesc: "Xfce GStreamer media player"
 ldesc: "Parole is a modern media player based on the GStreamer framework 
 and written for the Xfce desktop."
