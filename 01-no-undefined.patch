@@ -1,0 +1,36 @@
+--- origsrc/parole-0.3.0.3/configure.ac	2012-08-21 18:06:32.000000000 -0500
++++ src/parole-0.3.0.3/configure.ac	2012-08-27 20:48:56.385244800 -0500
+@@ -218,6 +218,10 @@ XDT_FEATURE_DEBUG()
+ #=======================================================#
+ GTK_DOC_CHECK(1.9)
+ 
++AC_SUBST([PLATFORM_CFLAGS])
++AC_SUBST([PLATFORM_LDFLAGS])
++AC_SUBST([PLATFORM_LIBS])
++
+ AC_OUTPUT([
+ Makefile
+ data/Makefile
+--- origsrc/parole-0.3.0.3/src/misc/Makefile.am	2012-08-20 07:34:36.000000000 -0500
++++ src/parole-0.3.0.3/src/misc/Makefile.am	2012-08-27 20:49:18.537511800 -0500
+@@ -1,4 +1,4 @@
+-noinst_LTLIBRARIES =                    	\
++lib_LTLIBRARIES =                    		\
+         libparole.la
+ 
+ INCLUDES =                              	\
+@@ -37,9 +37,13 @@ libparole_la_CFLAGS =				\
+ 	$(TAGLIBC_CFLAGS)			\
+ 	$(LIBXFCE4UTIL_CFLAGS)
+ 
++libparole_la_LDFLAGS =				\
++	$(PLATFORM_LDFLAGS)
++
+ libparole_la_LIBADD =				\
+ 	$(GTK_LIBS)				\
+-	$(TAGLIBC_LIBS)
++	$(TAGLIBC_LIBS)				\
++	$(LIBXFCE4UTIL_LIBS)
+ 
+ paroleincludedir =				\
+ 	$(includedir)/parole

@@ -1,0 +1,13 @@
+inherit xfce4
+
+CATEGORY="Audio Video Xfce"
+SUMMARY="Xfce GStreamer media player"
+DESCRIPTION="Parole is a modern media player based on the GStreamer framework
+and written for the Xfce desktop."
+HOMEPAGE="http://goodies.xfce.org/projects/applications/parole"
+
+PATCH_URI="01-no-undefined.patch"
+
+REQUIRES="gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-oss gstreamer0.10-plugins-ximage"
+
+CYGCONF_ARGS="--disable-power-manager-plugin"
