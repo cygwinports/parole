@@ -1,0 +1,31 @@
+Really, the world is bigger than Linux and FreeBSD...
+
+--- origsrc/parole-0.5.2/src/gst/parole-gst.c	2013-07-23 15:22:53.000000000 -0500
++++ src/parole-0.5.2/src/gst/parole-gst.c	2013-07-25 13:50:41.471849900 -0500
+@@ -1580,7 +1580,7 @@ parole_gst_missing_codec_dialog(ParoleGs
+                             GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+ #if defined(__linux__)
+                             GTK_MESSAGE_QUESTION,
+-#elif defined(__FreeBSD__)
++#else
+                             GTK_MESSAGE_WARNING,
+ #endif
+                             GTK_BUTTONS_NONE,
+@@ -1595,7 +1595,7 @@ parole_gst_missing_codec_dialog(ParoleGs
+                             _("Install"), 
+                             GTK_RESPONSE_ACCEPT,
+                             NULL );
+-#elif defined(__FreeBSD__)
++#else
+     gtk_dialog_add_button( GTK_DIALOG(dialog), 
+                             GTK_STOCK_OK,
+                             GTK_RESPONSE_ACCEPT);
+@@ -1605,7 +1605,7 @@ parole_gst_missing_codec_dialog(ParoleGs
+ #if defined(__linux__)
+                                              "Parole needs <b>%s</b> to play this file.\n"
+                                              "It can be installed automatically.",
+-#elif defined(__FreeBSD__)
++#else
+                                              "Parole needs <b>%s</b> to play this file.",
+ #endif
+                                              desc);
