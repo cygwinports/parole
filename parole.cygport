@@ -1,5 +1,8 @@
 inherit xfce4
 
+NAME="parole"
+VERSION=0.5.1
+RELEASE=1
 CATEGORY="Audio Video Xfce"
 SUMMARY="Xfce GStreamer media player"
 DESCRIPTION="Parole is a modern media player based on the GStreamer framework
