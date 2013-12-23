@@ -1,7 +1,7 @@
 inherit xfce4
 
 NAME="parole"
-VERSION=0.5.2
+VERSION=0.5.4
 RELEASE=1
 CATEGORY="Audio Video Xfce"
 SUMMARY="Xfce GStreamer media player"
@@ -11,7 +11,6 @@ HOMEPAGE="http://goodies.xfce.org/projects/applications/parole"
 
 PATCH_URI="
 	01-no-undefined.patch
-	02-cygwin.patch
 "
 
 REQUIRES="gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-oss gstreamer0.10-plugins-ximage"
