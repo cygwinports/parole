@@ -1,7 +1,7 @@
 inherit xfce4
 
 NAME="parole"
-VERSION=0.5.4
+VERSION=0.8.1
 RELEASE=1
 CATEGORY="Audio Video Xfce"
 SUMMARY="Xfce GStreamer media player"
@@ -13,6 +13,23 @@ PATCH_URI="
 	01-no-undefined.patch
 "
 
-REQUIRES="gstreamer0.10-plugins-base gstreamer0.10-plugins-good gstreamer0.10-plugins-oss gstreamer0.10-plugins-ximage"
+PKG_NAMES="${NAME}" # ${NAME}-devel"
+parole_REQUIRES="gstreamer1.0-plugins-base gstreamer1.0-plugins-good"
+parole_CONTENTS="
+	etc/postinstall/parole.sh
+	usr/bin/parole.exe
+	usr/lib/parole-0/
+	usr/share/appdata/parole.appdata.xml
+	usr/share/applications/parole.desktop
+	usr/share/doc/parole/
+	usr/share/icons/hicolor/*/apps/parole*
+	usr/share/locale/*/LC_MESSAGES/parole.mo
+	usr/share/parole/
+"
+parole_devel_CONTENTS="
+	usr/include/parole/
+"
+# headers are only usable in source tree, and implib would need to be installed
+PKG_IGNORE=${parole_devel_CONTENTS}
 
-CYGCONF_ARGS="--disable-power-manager-plugin"
+CYGCONF_ARGS="--with-gstreamer=1.0"
